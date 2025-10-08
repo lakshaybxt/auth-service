@@ -12,9 +12,9 @@ jobs:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_DB: authdb
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: userdb
+          POSTGRES_USER: userdb
+          POSTGRES_PASSWORD: changemeinprod!
         ports:
           - 5433:5432
         options: >-
@@ -42,7 +42,7 @@ jobs:
           docker build -t auth-service:1.0.0 .
           docker tag auth-service:1.0.0 lakshaybxt/auth-service:1.0.0
 
-      - name: Push Docker Image
+      - name: Login Docker
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
