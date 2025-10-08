@@ -22,4 +22,9 @@ public class UserController {
         LoginResponse response = authService.changeRoleToAdmin(userId);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping(path = "/hello")
+    public ResponseEntity<String> hello() {
+        return ResponseEntity.ok("Hello Bro");
+    }
 }

@@ -1,5 +1,6 @@
 services:
   db:
+    container_name: postgres-user
     image: postgres:latest
     ports:
       - "5433:5432"
@@ -8,9 +9,25 @@ services:
       POSTGRES_DB: userdb
       POSTGRES_USER: userdb
       POSTGRES_PASSWORD: changemeinprod!
+    networks:
+      - spring-demo
 
   adminer:
     image: adminer:latest
     restart: always
     ports:
       - "8000:8080"
+
+  user-service:
+    container_name: userService
+    image: user/service:1.0.0
+    ports:
+      - 8088:8080
+    networks:
+      - spring-demo
+    depends_on:
+      - db
+
+networks:
+  spring-demo:
+    driver: bridge
