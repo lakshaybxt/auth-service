@@ -1,4 +1,4 @@
-name: cicd.yml
+name: pipeline-backend.yml
 
 on:
   push:
