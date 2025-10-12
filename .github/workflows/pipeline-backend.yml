@@ -60,6 +60,6 @@ jobs:
 #          script: |
 #            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 #            docker pull lakshaybxt/auth-service:1.0.0
-#            docker stop my-service || true
-#            docker rm my-service || true
+#            docker stop ${{ matrix.service }} || true
+#            docker rm ${{ matrix.service }} || true
 #            docker run -d -p 8080:8080 --name auth-service --rm lakshaybxt/auth-service:1.0.0
